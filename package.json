@@ -1,0 +1,29 @@
+{
+  "name": "simple-peer-server",
+  "version": "1.0.0",
+  "description": "A signaling  server for simple-peer. Must be paired with simple-peer-wrapper on the client side. ",
+  "main": "lib/simple-peer-server.js",
+  "directories": {
+    "example": "example",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lisajamhoury/simple-peer-server.git"
+  },
+  "keywords": [
+    "simple-peer",
+    "webrtc",
+    "peer connection",
+    "datachannels"
+  ],
+  "author": "lisajamhoury",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lisajamhoury/simple-peer-server/issues"
+  },
+  "homepage": "https://github.com/lisajamhoury/simple-peer-server#readme"
+}
