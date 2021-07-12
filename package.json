@@ -1,6 +1,6 @@
 {
   "name": "simple-peer-server",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A signaling  server for simple-peer. Must be paired with simple-peer-wrapper on the client side. ",
   "main": "lib/simple-peer-server.js",
   "directories": {
@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/lisajamhoury/simple-peer-server/issues"
   },
-  "homepage": "https://github.com/lisajamhoury/simple-peer-server#readme"
+  "homepage": "https://github.com/lisajamhoury/simple-peer-server#readme",
+  "dependencies": {
+    "socket.io": "^4.1.3"
+  }
 }
