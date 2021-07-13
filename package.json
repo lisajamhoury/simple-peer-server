@@ -1,24 +1,37 @@
 {
   "name": "simple-peer-server",
   "version": "0.0.1",
-  "description": "A signaling  server for simple-peer. Must be paired with simple-peer-wrapper on the client side. ",
+  "description": "A signaling server for simple-peer. Must be paired with simple-peer-wrapper on the client side.",
   "main": "src/simple-peer-server.js",
   "directories": {
     "example": "example",
-    "lib": "lib"
+    "src": "src"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "browserify src/simple-peer-server.js -s SimplePeerServer > dist/simple-peer-wrapper.js",
+    "watch": "watchify src/index.js -s SimplePeerWrapper -o dist/simple-peer-wrapper.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lisajamhoury/simple-peer-server.git"
   },
   "keywords": [
-    "simple-peer",
-    "webrtc",
+    "data",
+    "data channel",
+    "data channel stream",
+    "data channels",
+    "p2p",
+    "peer",
     "peer connection",
-    "datachannels"
+    "peer-to-peer",
+    "simple-peer",
+    "signaling server",
+    "socket server",
+    "stream",
+    "video",
+    "voice",
+    "webrtc",
+    "webrtc stream"
   ],
   "author": "lisajamhoury",
   "license": "MIT",
@@ -28,5 +41,8 @@
   "homepage": "https://github.com/lisajamhoury/simple-peer-server#readme",
   "dependencies": {
     "socket.io": "^4.1.3"
+  },
+  "devDependencies": {
+    "browserify": "^17.0.0"
   }
 }
