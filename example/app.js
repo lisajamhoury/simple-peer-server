@@ -13,7 +13,7 @@ const usersRouter = require('./routes/users');
 const app = express();
 
 const server = http.createServer(app);
-const SimplePeerServer = require('./utils/simple-peer-server.js');
+const SimplePeerServer = require('simple-peer-server');
 
 const spServer = new SimplePeerServer(server, true);
 

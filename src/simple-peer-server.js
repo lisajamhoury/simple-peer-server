@@ -1,5 +1,3 @@
-const SocketIO = require('socket.io');
-
 class SimplePeerServer {
   constructor(httpServer, debug) {
     this.rooms = [];
@@ -14,7 +12,7 @@ class SimplePeerServer {
   }
 
   init(httpServer) {
-    const ioServer = new SocketIO(httpServer);
+    const ioServer = require('socket.io')(httpServer);
     ioServer.sockets.on('connection', (socket) => {
       // logs server messages on the client
       socket.on('message', (message) =>
