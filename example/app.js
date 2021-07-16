@@ -17,8 +17,6 @@ const SimplePeerServer = require('simple-peer-server');
 
 const spServer = new SimplePeerServer(server, true);
 
-// initSignalServer(server);
-
 server.listen(8081);
 
 const liveReloadServer = livereload.createServer();

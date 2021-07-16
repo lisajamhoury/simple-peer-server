@@ -1,5 +1,3 @@
-const SocketIO = require('socket.io');
-
 class SimplePeerServer {
   constructor(httpServer, debug) {
     this.rooms = [];
@@ -14,7 +12,12 @@ class SimplePeerServer {
   }
 
   init(httpServer) {
-    const ioServer = new SocketIO(httpServer);
+    const ioServer = require('socket.io')(httpServer, {
+      cors: {
+        origin: '*',
+      },
+    });
+
     ioServer.sockets.on('connection', (socket) => {
       // logs server messages on the client
       socket.on('message', (message) =>
@@ -55,8 +58,9 @@ class SimplePeerServer {
   }
 
   _handleCreateOrJoin(socket, ioServer) {
-    const clientIds = Object.keys(ioServer.sockets.sockets);
+    const clientIds = Array.from(ioServer.sockets.sockets.keys());
     const numClients = clientIds.length;
+
     this.debug && console.log('NUMCLIENTS, ' + numClients);
 
     if (numClients === 1) {

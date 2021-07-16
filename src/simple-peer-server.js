@@ -12,7 +12,12 @@ class SimplePeerServer {
   }
 
   init(httpServer) {
-    const ioServer = require('socket.io')(httpServer);
+    const ioServer = require('socket.io')(httpServer, {
+      cors: {
+        origin: '*',
+      },
+    });
+
     ioServer.sockets.on('connection', (socket) => {
       // logs server messages on the client
       socket.on('message', (message) =>
@@ -53,8 +58,9 @@ class SimplePeerServer {
   }
 
   _handleCreateOrJoin(socket, ioServer) {
-    const clientIds = Object.keys(ioServer.sockets.sockets);
+    const clientIds = Array.from(ioServer.sockets.sockets.keys());
     const numClients = clientIds.length;
+
     this.debug && console.log('NUMCLIENTS, ' + numClients);
 
     if (numClients === 1) {
