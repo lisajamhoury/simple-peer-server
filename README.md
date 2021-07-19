@@ -18,7 +18,7 @@ This package is a signaling server. It is not a STUN or TURN server! If you are 
 
 # Usage
 
-You must have [node and npm](https://nodejs.org/en/download/) installed to use this module. (If this is new to you, here's [an explanation of node](https://www.youtube.com/watch?v=FjWbUK2HdCo&t=0s) you might want to watch first.)
+You must have [node and npm](https://nodejs.org/en/download/) installed to use this module. (If this is new to you, you might want to watch [this explanation of node](https://www.youtube.com/watch?v=FjWbUK2HdCo&t=0s) before continuing.)
 
 Install the package using npm or your favorite package manager.
 
