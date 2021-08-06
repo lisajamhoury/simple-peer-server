@@ -1,6 +1,6 @@
 {
   "name": "simple-peer-server",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A signaling server for simple-peer. Must be paired with simple-peer-wrapper on the client side.",
   "main": "src/simple-peer-server.js",
   "directories": {

@@ -1,7 +1,7 @@
 {
   "name": "simple-peer-server-example",
   "description": "An example of a signaling server using simple-peer-server.",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "scripts": {
     "start": "node app.js",
     "watch": "nodemon --inspect app.js"

@@ -32,7 +32,6 @@ class SimplePeerServer {
       socket.on('create or join', () =>
         this._handleCreateOrJoin(socket, ioServer),
       );
-      socket.on('ipaddr', () => this._handleIpAddress(socket));
       socket.on('hangup', () => this._handleHangup(socket));
       socket.on('disconnect', (reason) =>
         this._handleDisconnect(reason),
@@ -120,20 +119,6 @@ class SimplePeerServer {
     this.roomCounter++;
     return room;
   }
-
-  _handleIpAddress = (socket) => {
-    let ifaces = os.networkInterfaces();
-    for (let dev in ifaces) {
-      ifaces[dev].forEach(function (details) {
-        if (
-          details.family === 'IPv4' &&
-          details.address !== '127.0.0.1'
-        ) {
-          socket.emit('ipaddr', details.address);
-        }
-      });
-    }
-  };
 
   _handleHangup() {
     this.debug && console.log('received hangup');
