@@ -101,12 +101,10 @@ class SimplePeerServer {
               'Client ID ' + clientIds[i] + ' joined room ' + room,
             );
 
-          ioServer.sockets.sockets[clientIds[i]].join(room);
-          ioServer.sockets.sockets[clientIds[i]].emit(
-            'joined',
-            room,
-            clientIds[i],
-          );
+          ioServer.sockets.sockets.get(clientIds[i]).join(room);
+          ioServer.sockets.sockets
+            .get(clientIds[i])
+            .emit('joined', room, clientIds[i]);
         }
       }
     }
