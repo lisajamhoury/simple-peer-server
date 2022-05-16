@@ -64,7 +64,7 @@ node app.js
 
 ## Options
 
-Simple-peer-server takes two arguments: an server and an option to debug. The server is required. The debug argument is optional. It defaults to false. If true is passed, it turns on additional server logs from the signaling server.
+Simple-peer-server takes two arguments: a server and an option to debug. The server is required. The debug argument is optional. It defaults to false. If true is passed, it turns on additional server logs from the signaling server.
 
 ```javascript
 const spServer = new SimplePeerServer(server, true); // true turns on logging
