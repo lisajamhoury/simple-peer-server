@@ -1,5 +1,6 @@
 class SimplePeerServer {
   constructor(httpServer, debug) {
+    this.ioServer = null;
     this.rooms = [];
     this.roomCounter = 0;
 
@@ -12,13 +13,13 @@ class SimplePeerServer {
   }
 
   init(httpServer) {
-    const ioServer = require('socket.io')(httpServer, {
+    this.ioServer = require('socket.io')(httpServer, {
       cors: {
         origin: '*',
       },
     });
 
-    ioServer.sockets.on('connection', (socket) => {
+    this.ioServer.sockets.on('connection', (socket) => {
       // logs server messages on the client
       socket.on('message', (message) =>
         this._handleMessage(message, socket),
@@ -30,7 +31,7 @@ class SimplePeerServer {
         this._handleSendSignal(message, socket),
       );
       socket.on('create or join', () =>
-        this._handleCreateOrJoin(socket, ioServer),
+        this._handleCreateOrJoin(socket, this.ioServer),
       );
       socket.on('hangup', () => this._handleHangup(socket));
       socket.on('disconnect', (reason) =>
@@ -57,7 +58,9 @@ class SimplePeerServer {
   }
 
   _handleCreateOrJoin(socket, ioServer) {
-    const clientIds = Array.from(ioServer.sockets.sockets.keys());
+    const clientIds = Array.from(
+      this.ioServer.sockets.sockets.keys(),
+    );
     const numClients = clientIds.length;
 
     this.debug && console.log('NUMCLIENTS, ' + numClients);
@@ -73,10 +76,10 @@ class SimplePeerServer {
         );
     } else if (numClients === 2) {
       const room = this.rooms[0];
-      ioServer.sockets.in(room).emit('join', room);
+      this.ioServer.sockets.in(room).emit('join', room);
       socket.join(room);
       socket.emit('joined', room, socket.id);
-      ioServer.sockets.in(room).emit('ready'); // not being used anywhere
+      this.ioServer.sockets.in(room).emit('ready'); // not being used anywhere
 
       this.debug &&
         console.log(
@@ -101,8 +104,8 @@ class SimplePeerServer {
               'Client ID ' + clientIds[i] + ' joined room ' + room,
             );
 
-          ioServer.sockets.sockets.get(clientIds[i]).join(room);
-          ioServer.sockets.sockets
+          this.ioServer.sockets.sockets.get(clientIds[i]).join(room);
+          this.ioServer.sockets.sockets
             .get(clientIds[i])
             .emit('joined', room, clientIds[i]);
         }
