@@ -1,12 +1,18 @@
 class SimplePeerServer {
-  constructor(httpServer, debug) {
-    this.ioServer = null;
+  constructor(httpServer, debug, simplePeerOptions) {
+    this.ioServer;
     this.rooms = [];
     this.roomCounter = 0;
 
     this.debug = false;
     if (typeof debug !== 'undefined') {
       this.debug = true;
+    }
+
+    this.simplePeerOptions;
+    if (typeof simplePeerOptions !== 'undefined') {
+      console.log('setting options');
+      this.simplePeerOptions = simplePeerOptions;
     }
 
     this.init(httpServer);
@@ -37,6 +43,10 @@ class SimplePeerServer {
       socket.on('disconnect', (reason) =>
         this._handleDisconnect(reason),
       );
+
+      if (typeof this.simplePeerOptions !== 'undefined') {
+        socket.emit('simple peer options', this.simplePeerOptions);
+      }
     });
   }
 
