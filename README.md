@@ -18,7 +18,7 @@ This package is a signaling server. It is not a STUN or TURN server! If you are 
 
 # A note on STUN and TURN servers
 
-Simple-peer-server and simple-peer-wrapper[https://github.com/lisajamhoury/simple-peer-wrapper] together provide a [signaling server](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Signaling_and_video_calling) and client that establish a connection between two or more peers.
+Simple-peer-server and [simple-peer-wrapper](https://github.com/lisajamhoury/simple-peer-wrapper) together provide a [signaling server](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Signaling_and_video_calling) and client that establish a connection between two or more peers.
 
 They use [Socket.IO](https://socket.io/) to transport the signaling messages, then create the peer connections via [simple-peer](https://github.com/feross/simple-peer).
 
@@ -28,7 +28,7 @@ Default STUN servers are provided by simple-peer. Although they can be overwritt
 
 To learn more about signaling, STUN, and TURN servers, I recommend [this article by Sam Dutton](https://www.html5rocks.com/en/tutorials/webrtc/infrastructure/). If you are in need of a TURN server, you may find this article on [How to set up and configure your own TURN server using Coturn](https://gabrieltanner.org/blog/turn-server) by Gabriel Turner helpful. You could also check out paid services like [Twilio's Network Traversal Service](https://www.twilio.com/stun-turn).
 
-Once you have your TURN servers setup, see the documentation below for how to include add them to your peer connections.
+Once you have your TURN servers setup, see the documentation below for how to add them to your peer connections.
 
 # Usage
 
@@ -78,7 +78,7 @@ node app.js
 
 ## Options
 
-Simple-peer-server takes three arguments: a server, an option to debug, and an option to add options for simple-peer (including STUN/TURN servers.
+Simple-peer-server takes three arguments: a server, an option to debug, and an option to add simple-peer options (including STUN/TURN servers).
 
 You must provide a server. The other parameters are optional.
 
